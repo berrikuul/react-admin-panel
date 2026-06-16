@@ -56,7 +56,6 @@ function App() {
   };
 
   const renderPage = () => {
-  // Если пользователь не вошёл — показываем только модалку входа
   if (!auth) {
     return (
       <AuthModal
@@ -67,13 +66,11 @@ function App() {
     );
   }
 
-  // Админ-панель доступна только admin
   if (activePage === "admin") {
     if (auth.role !== "admin") return null;
     return <AdminPanel auth={auth} onBack={() => setActivePage("main")} />;
   }
 
-  // Личный кабинет доступен только авторизованным
   if (activePage === "profile") {
     return (
       <ProfilePage
@@ -85,7 +82,6 @@ function App() {
     );
   }
 
-  // Основная страница со списком офисов
   return (
     <div className="layout">
       <div className="offices-scroll">
