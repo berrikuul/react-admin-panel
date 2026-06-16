@@ -1,0 +1,50 @@
+.map-area {
+  margin-top: 20px;
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.room-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+
+.room-card:hover {
+  transform: translateY(-4px);
+}
+
+.room-info h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.room-info p {
+  color: #666;
+  margin: 4px 0 10px;
+}
+
+.room-card button {
+  align-self: flex-start;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.room-card button:hover {
+  background: #357ab8;
+}
