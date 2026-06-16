@@ -29,5 +29,12 @@
 Для тестирования приложения можно использовать:
 
 ```text id="jlwm6n"
+Admin
 Email: admin@admin.com
 Password: 123456
+
+User
+Email: user@user.com
+Password: 123456
+
+
