@@ -4,6 +4,31 @@ export const STORAGE_KEYS = {
   AUTH: "rb_auth_v1",
 };
 
+export function initializeUsers() {
+  const users = load(STORAGE_KEYS.USERS, []);
+
+  if (users.length === 0) {
+    const defaultUsers = [
+      {
+        id: "admin_1",
+        name: "Администратор",
+        email: "admin@admin.com",
+        password: "123456",
+        role: "admin",
+      },
+      {
+        id: "user_1",
+        name: "Пользователь",
+        email: "user@user.com",
+        password: "123456",
+        role: "user",
+      },
+    ];
+
+    save(STORAGE_KEYS.USERS, defaultUsers);
+  }
+}
+
 export function load(key, fallback = []) {
   try {
     const raw = localStorage.getItem(key);

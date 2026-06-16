@@ -4,14 +4,22 @@ import OfficesList from "./components/OfficesList";
 import AuthModal from "./components/AuthModal";
 import ProfilePage from "./components/ProfilePage";
 import AdminPanel from "./components/AdminPanel";
-import { load, STORAGE_KEYS, bookingsApi, officesApi, OFFICES } from "./api";
+import {
+  load,
+  STORAGE_KEYS,
+  bookingsApi,
+  officesApi,
+  OFFICES,
+  initializeUsers,
+} from "./api";
+
 
 function App() {
   const qc = useQueryClient();
   const [showAuth, setShowAuth] = useState(false);
-  const [showBooking, setShowBooking] = useState(false);
-  const [office, setOffice] = useState(null);
-  const [room, setRoom] = useState(null);
+  const [, setShowBooking] = useState(false);
+  const [, setOffice] = useState(null);
+  const [, setRoom] = useState(null);
   const [activePage, setActivePage] = useState("main");
   const [auth, setAuth] = useState(load(STORAGE_KEYS.AUTH, null));
 
@@ -28,11 +36,14 @@ function App() {
   });
 
   useEffect(() => {
+    initializeUsers();
+    
     if (!localStorage.getItem("rb_offices_v1")) {
       localStorage.setItem("rb_offices_v1", JSON.stringify(OFFICES));
     }
+  
     qc.setQueryData(["auth"], auth);
-
+  
     if (!auth) {
       setShowAuth(true);
     }
